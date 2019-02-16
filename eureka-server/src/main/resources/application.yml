@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: 8080
+
+# Tells this application not to register with itself, because it it acting as the server.
+eureka:
+  instance:
+    hostname: localhost
+  server:
+    maxThreadsForPeerReplication: 0
+    enableSelfPreservation: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/ #Specify the register url. If multiple Eureka Server, comma delimit them

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zuul-proxy
+
+server:
+  port: 8085
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    hostname: localhost
+    preferIpAddress: false
+    instanceId: ${eureka.instance.hostname}:${spring.application.name}:${random.int}
+    securePortEnabled: false
+    nonSecurePortEnabled: true
+    leaseRenewalIntervalInSeconds: 30
